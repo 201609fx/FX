@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table1>
+    <Title>深圳市质量监督局</Title>
+    <Url>http://www.szbqts.gov.cn/</Url>
+  </Table1> 
+  <Table1>
+    <Title>深圳标准技术研究院</Title>
+    <Url>http://www.sist.gov.cn</Url>
+  </Table1>
+  <Table1>
+    <Title>WTO信息查询服务中心</Title>
+    <Url>http://www.wtosz.org/</Url>
+  </Table1>
+ <Table1>
+    <Title>技术壁垒资源网</Title>
+    <Url>http://www.tbtmap.cn/</Url>
+  </Table1>
+  <Table1>
+    <Title>深圳标准信息服务网</Title>
+    <Url>http://www.standard.org.cn/</Url>
+  </Table1>
+</NewDataSet>

@@ -1,0 +1,108 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8FD32E8D-34AC-409D-84D6-9A9955BD0A54}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SZMA.DataLayer</RootNamespace>
+    <AssemblyName>SZMA.DataLayer</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GotDotNet.ApplicationBlocks.Data, Version=3.1.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\GotDotNet.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnswerDAL.cs" />
+    <Compile Include="AnswerToltleDAL.cs" />
+    <Compile Include="ApproveDAL.cs" />
+    <Compile Include="AssessDAL.cs" />
+    <Compile Include="assessPlateDAL.cs" />
+    <Compile Include="CertDictDAL.cs" />
+    <Compile Include="CertNODAL.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="ComplainerDAL.cs" />
+    <Compile Include="CSFileDAL.cs" />
+    <Compile Include="DataBaseClass.cs" />
+    <Compile Include="dictAreaDAL.cs" />
+    <Compile Include="dictbrandDAL.cs" />
+    <Compile Include="DictCertDAL.cs" />
+    <Compile Include="dictresuleDAL.cs" />
+    <Compile Include="DictTaskDAL.cs" />
+    <Compile Include="EmployeeDAL.cs" />
+    <Compile Include="equipmentDAL.cs" />
+    <Compile Include="examineResultDAL.cs" />
+    <Compile Include="FileDAL.cs" />
+    <Compile Include="MainSCDAL.cs" />
+    <Compile Include="MainSCTempDAL.cs" />
+    <Compile Include="NewsDAL.cs" />
+    <Compile Include="OperateSADAL.cs" />
+    <Compile Include="OperationDAL.cs" />
+    <Compile Include="OperationMainDAL.cs" />
+    <Compile Include="OptionDAL.cs" />
+    <Compile Include="ProblemDAL.cs" />
+    <Compile Include="ProblemSortDAL.cs" />
+    <Compile Include="ProblemTypeDAL.cs" />
+    <Compile Include="ProductDAL.cs" />
+    <Compile Include="PromotionDealDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RightsDAL.cs" />
+    <Compile Include="SortDAL.cs" />
+    <Compile Include="statDAL.cs" />
+    <Compile Include="TaskDAL.cs" />
+    <Compile Include="UserDAL.cs" />
+    <Compile Include="UserGroupDAL.cs" />
+    <Compile Include="UserInfoDAL.cs" />
+    <Compile Include="User\DataBase.cs" />
+    <Compile Include="User\SECU_OBJDAL.cs" />
+    <Compile Include="User\SSO_USERINFODAL.cs" />
+    <Compile Include="User\TXW_CYDADAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BLL\BLL\BLL.csproj">
+      <Project>{8297060C-A847-4B47-955C-BB73CC3F4571}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\GotDotNet.ApplicationBlocks.Data.dll" />
+    <Content Include="bin\GotDotNet.ApplicationBlocks.Data.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

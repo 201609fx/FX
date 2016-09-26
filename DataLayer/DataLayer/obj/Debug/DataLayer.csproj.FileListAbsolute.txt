@@ -1,0 +1,7 @@
+Z:\F\FX\Code\szfx\0920\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.DataLayer.dll
+Z:\F\FX\Code\szfx\0920\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.DataLayer.pdb
+Z:\F\FX\Code\szfx\0920\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.BLL.dll
+Z:\F\FX\Code\szfx\0920\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.BLL.pdb
+Z:\F\FX\Code\szfx\0920\SZMA\DataLayer\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+Z:\F\FX\Code\szfx\0920\SZMA\DataLayer\DataLayer\obj\Debug\SZMA.DataLayer.dll
+Z:\F\FX\Code\szfx\0920\SZMA\DataLayer\DataLayer\obj\Debug\SZMA.DataLayer.pdb

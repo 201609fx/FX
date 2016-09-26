@@ -1,0 +1,4 @@
+Z:\F\FX\Code\szfx\0920\SZMA\BLL\BLL\bin\Debug\SZMA.BLL.dll
+Z:\F\FX\Code\szfx\0920\SZMA\BLL\BLL\bin\Debug\SZMA.BLL.pdb
+Z:\F\FX\Code\szfx\0920\SZMA\BLL\BLL\obj\Debug\SZMA.BLL.dll
+Z:\F\FX\Code\szfx\0920\SZMA\BLL\BLL\obj\Debug\SZMA.BLL.pdb

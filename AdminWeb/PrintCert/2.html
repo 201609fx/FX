@@ -1,0 +1,177 @@
+<html>
+<head>
+<style media=print>  
+/*
+* @breif: 用本样式在打印时隐藏非打印项目
+*/
+.Noprint
+{
+ display:none;
+}
+/*
+* @breif: 控制分页
+*/
+.PageNext
+{
+ page-break-after: always;
+}
+</style> 
+
+
+<script defer>
+function SetPrintSettings() {
+  // -- advanced features
+  //factory.printing.SetMarginMeasure(2) // measure margins in inches
+  //factory.SetPageRange(false, 1, 3) // need pages from 1 to 3
+  //factory.printing.printer = "HP DeskJet 870C"
+  //factory.printing.copies = 2
+  //factory.printing.collate = true
+  factory.printing.paperSize = "B5"
+    //factory.printing.Portrait   =true  //纵打
+       
+                                                         
+ factory.printing.paperSource = "Manual feed";
+
+  // -- basic features
+  factory.printing.header = "This is MeadCo";
+  factory.printing.footer = "Advanced Printing by ScriptX";
+  factory.printing.portrait = false;
+  factory.printing.leftMargin = 1.0;
+  factory.printing.topMargin = 1.0;
+  factory.printing.rightMargin = 1.0;
+  factory.printing.bottomMargin = 1.0;
+}
+</script>
+
+<script  type="text/javascript">   
+var HKEY_root,HKEY_Path,HKEY_Key; 
+HKEY_Root="HKEY_CURRENT_USER"; 
+HKEY_Path="\\Software\\microsoft\\Internet Explorer\\PageSetup\\"; 
+//设置网页打印的页眉页脚为空 
+
+
+
+
+function PageSetup_Null() 
+{ 
+ try 
+ { 
+  var Wsh=new ActiveXObject("WScript.shell"); 
+  HKEY_Key="header"; 
+  Wsh.RegWrite(HKEY_Root+HKEY_Path+HKEY_Key,""); 
+  HKEY_Key="footer"; 
+  Wsh.RegWrite(HKEY_Root+HKEY_Path+HKEY_Key,""); 
+ } 
+ catch(e)
+ {
+  alert(e.message);
+ } 
+} 
+//设置网页打印的页眉页脚为默认值 
+function  PageSetup_Default() 
+{   
+ try 
+ { 
+  var Wsh=new ActiveXObject("WScript.Shell"); 
+  HKEY_Key="header"; 
+  Wsh.RegWrite(HKEY_Root+HKEY_Path+HKEY_Key,"&w&b页码,&p/&P"); 
+  HKEY_Key="footer"; 
+  Wsh.RegWrite(HKEY_Root+HKEY_Path+HKEY_Key,"&u&b&d"); 
+ } 
+ catch(e)
+ {
+  alert(e.message);
+ } 
+} 
+</script> 
+</head>
+<body>
+<p>Web.ExecWB(2,1)：关闭现在所有的IE窗口，并打开一个新窗口</p> 
+<p>webBrowser.ExecWB(1,1)： 打开</p> 
+<p>Web.ExecWB(4,1)： 保存网页</p> 
+<p>Web.ExecWB(6,1): 打印</p> 
+<p>Web.ExecWB(7,1): 打印预览</p> 
+<p>Web.ExecWB(8,1): 打印页面设置</p> 
+<p>Web.ExecWB(10,1): 查看页面属性</p> 
+<p>Web.ExecWB(15,1): 好像是撤销，有待确认</p> 
+<p>Web.ExecWB(17,1): 全选</p> 
+<p>Web.ExecWB(22,1): 刷新</p> 
+<p>Web.ExecWB(45,1): 关闭窗体无提示</p> 
+
+
+
+转贴:IEWebBrowser组件的execWB方法 haley_hj（原作）
+
+
+关键字     IEWebBrowser﹑execWB﹑打印 
+  
+我对IEWebBrowser这个组件的execWB方法整理了一下﹐希望对大家有所帮助。 
+2. 调用方法。 
+WebBrowser.ExecWB nCmdID, nCmdExecOpt, [pvaIn], [pvaOut] 
+3. 参数说明。 
+(a).nCmdID 
+OLECMDID_OPEN = 1, 
+OLECMDID_NEW = 2, 
+OLECMDID_SAVE = 3, 
+OLECMDID_SAVEAS = 4, 
+OLECMDID_SAVECOPYAS = 5, 
+OLECMDID_PRINT = 6, 
+OLECMDID_PRINTPREVIEW = 7, 
+OLECMDID_PAGESETUP = 8, 
+OLECMDID_SPELL = 9, 
+OLECMDID_PROPERTIES = 10, 
+OLECMDID_CUT = 11, 
+OLECMDID_COPY = 12, 
+OLECMDID_PASTE = 13, 
+OLECMDID_PASTESPECIAL = 14, 
+OLECMDID_UNDO = 15, 
+OLECMDID_REDO = 16, 
+OLECMDID_SELECTALL = 17, 
+OLECMDID_CLEARSELECTION = 18, 
+OLECMDID_ZOOM = 19, 
+OLECMDID_GETZOOMRANGE = 20 
+OLECMDID_UPDATECOMMANDS = 21 
+OLECMDID_REFRESH = 22 
+OLECMDID_STOP = 23 
+OLECMDID_HIDETOOLBARS = 24 
+OLECMDID_SETPROGRESSMAX = 25 
+OLECMDID_SETPROGRESSPOS = 26 
+OLECMDID_SETPROGRESSTEXT = 27 
+OLECMDID_SETTITLE = 28 
+OLECMDID_SETDOWNLOADSTATE = 29 
+OLECMDID_STOPDOWNLOAD = 30 
+上面的关键词都可以在浏览器的菜单里面找到对应的选项﹐大家一看就明白的﹗ 
+(b).nCmdExecOpt 
+OLECMDEXECOPT_DODEFAULT = 0, 
+OLECMDEXECOPT_PROMPTUSER = 1, 
+LECMDEXECOPT_DONTPROMPTUSER = 2, 
+OLECMDEXECOPT_SHOWHELP = 3 
+对于这个参数﹐一般来说﹐选1就可以了。
+
+这是调用IE的”另存为”功能的示例﹕
+
+
+<OBJECT id="factory" viewastext name="factory" style="DISPLAY:none;WIDTH:1px;HEIGHT:1px" codebase="http://www.meadroid.com/scriptx/smsx.cab#Version=5,60,0,360" classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814">   
+  </OBJECT>
+
+<object  id="WebBrowser"  width=0  height=0  classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2">     
+ <PARAM NAME="Offline" VALUE="0">
+</object>     
+<table width="200" border="1" cellspacing="1" cellpadding="2" style="border-color:Black;"><tr><td>asdasdasd</td><td>asdasdasd</td></tr><tr><td>asdasdasd</td><td>asdasdasd</td></tr></table>
+<center class="Noprint">
+<br>
+<input type=button value=打印 onclick="SetPrintSettings();document.all.WebBrowser.ExecWB(6,1)">  
+<br>
+<input type=button value=直接打印 onclick=document.all.WebBrowser.ExecWB(6,6)>  
+<br>
+<input type=button value=页面设置 onclick="document.all.WebBrowser.ExecWB(8,1)">  
+<br>
+<input type=button value=打印预览 onclick=document.all.WebBrowser.ExecWB(7,1)>  
+<br>
+</center>  
+<br>
+<input type="button" value="清空页码" onclick=PageSetup_Null()> 
+<br>
+<input type="button" value="恢复页码" onclick=PageSetup_Default()> 
+</body>
+</html>

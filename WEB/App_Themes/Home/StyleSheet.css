@@ -1,0 +1,221 @@
+﻿body
+{
+	padding-top:0px;
+	margin-top:0px;
+	background-image: url(../../img/bg.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+
+
+.sitemap {font-family: "宋体"; font-size: 12px; color: #FFFFFF; text-decoration: none;}
+.sitemap a:link {font-family: "宋体"; font-size: 12px; color: #FFFFFF; text-decoration: none;}
+.sitemap a:visited {font-family: "宋体"; font-size: 12px; color: #FFFFFF; text-decoration: none;}
+.sitemap a:hover {font-family: "宋体"; font-size: 12px; color: #4AE3FF; text-decoration: none;}
+.link-01 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FFFFFF;
+	text-align: center;
+	text-decoration: none;
+	background-image: url(../../img/dh_bg_1.gif);
+	background-repeat: repeat-x;
+	height: 29px;
+	padding-top: 10px;
+	width: 80px;
+}
+.link-01:link {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: center;
+	background-image: url(../../img/dh_bg_1.gif);
+	background-repeat: repeat-x;
+	height: 29px;
+	padding-top: 10px;
+	width: 80px;
+}
+.link-01:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: center;
+	background-image: url(../../img/dh_bg_1.gif);
+	background-repeat: repeat-x;
+	height: 29px;
+	padding-top: 10px;
+	width: 80px;
+}
+.link-01:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #4AE3FF;
+	text-decoration: none;
+	text-align: center;
+	background-image: url(../../img/dh_bg_2.gif);
+	background-repeat: repeat-x;
+	height: 29px;
+	padding-top: 10px;
+	width: 80px;
+}
+.link-02 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+	line-height: 25px;
+
+}
+.link-02:link {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.link-02:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.link-02:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+}
+.link-03 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #3E3E3E;
+	text-decoration: none;
+	line-height: 25px;
+}
+.link-03:link {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #3E3E3E;
+	text-decoration: none;
+}
+.link-03:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #3E3E3E;
+	text-decoration: none;
+}
+.link-03:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.link-04 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #008FCB;
+	text-decoration: none;
+}
+.link-04:link {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #008FCB;
+	text-decoration: none;
+}
+.link-04:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #008FCB;
+	text-decoration: none;
+}
+.link-04:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.text-white {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 18px;
+}
+.text-white1 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FFFFFF;
+	line-height: 16px;
+}
+.text-hui {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #707070;
+}
+.input-1 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #666666;
+	background-color: #F4F4F4;
+	height: 18px;
+	width: 220px;
+	border: 1px solid #D4D4D4;
+}
+.right-bg {
+	background-image: url(../../img/right_15.gif);
+	background-repeat: no-repeat;
+	width: 356px;
+	background-position: bottom;
+}
+.bt-hui {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #383838;
+}
+.bt-hui3 {
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bold;
+	color: #383838;
+}
+.bt-hui1 {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #7E7E7E;
+}
+.bt-huihead {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #7E7E7E;
+	background-image:url(../../img/body_list_1.gif);
+}
+.text-wz {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-align: justify;
+	text-justify : inter-ideograph;
+	line-height: 20px;
+}
+.text-red {
+	font-family: "宋体";
+	font-size: 12px;
+	color:Red;
+	text-align: justify;
+	text-justify : inter-ideograph;
+	line-height: 20px;
+}
+.text-b {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #666666;
+	text-indent: 6pt;
+}
+.main-text {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+}

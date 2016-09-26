@@ -1,0 +1,14 @@
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\SZMA.Core.dll.config
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\SZMA.Core.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\SZMA.Core.pdb
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\FreeTextBox.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\SZMA.DataLayer.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\GotDotNet.ApplicationBlocks.Data.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\SZMA.BLL.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\SZMA.BLL.pdb
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\bin\Debug\SZMA.DataLayer.pdb
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\obj\Debug\ResolveAssemblyReference.cache
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\obj\Debug\SZMA.Core.AspNetPager.resources
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\obj\Debug\SZMA.Core.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\Core\Core\obj\Debug\SZMA.Core.pdb

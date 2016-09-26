@@ -1,0 +1,7 @@
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.DataLayer.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.DataLayer.pdb
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.BLL.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\DataLayer\DataLayer\bin\Debug\SZMA.BLL.pdb
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\DataLayer\DataLayer\obj\Debug\ResolveAssemblyReference.cache
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\DataLayer\DataLayer\obj\Debug\SZMA.DataLayer.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\DataLayer\DataLayer\obj\Debug\SZMA.DataLayer.pdb

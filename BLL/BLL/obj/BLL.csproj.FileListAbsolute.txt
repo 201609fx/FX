@@ -1,0 +1,5 @@
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\BLL\BLL\bin\Debug\SZMA.BLL.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\BLL\BLL\bin\Debug\SZMA.BLL.pdb
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\BLL\BLL\obj\Debug\ResolveAssemblyReference.cache
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\BLL\BLL\obj\Debug\SZMA.BLL.dll
+C:\Inetpub\wwwroot\SZMA\SZMA\SZMA\BLL\BLL\obj\Debug\SZMA.BLL.pdb

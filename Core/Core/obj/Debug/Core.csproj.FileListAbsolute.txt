@@ -1,0 +1,14 @@
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\SZMA.Core.dll.config
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\SZMA.Core.dll
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\SZMA.Core.pdb
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\FreeTextBox.dll
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\SZMA.DataLayer.dll
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\GotDotNet.ApplicationBlocks.Data.dll
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\SZMA.BLL.dll
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\SZMA.DataLayer.pdb
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\bin\Debug\SZMA.BLL.pdb
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\SZMA.Core.AspNetPager.resources
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\SZMA.Core.dll
+Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\SZMA.Core.pdb

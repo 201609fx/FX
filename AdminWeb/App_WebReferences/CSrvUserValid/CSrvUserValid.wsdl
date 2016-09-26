@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetNewUPGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fmyUserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewUPGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewUPGroupResult" type="tns:CUPGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CUPGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="oUserLog" type="tns:CUserLog" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:CUser" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserPrivilages" type="tns:ArrayOfCUserPrivilage" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrivilageCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUserLog">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="sUserLogID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sRecoTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sObjectID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sUserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sMemoInfoList" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sBefore" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sAfter" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sOperate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sUserIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="sComputerName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserFlag" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserLog" type="tns:CUserLog" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComputerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XunChaZu" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsManager" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phonenumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeptType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCUserPrivilage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CUserPrivilage" nillable="true" type="tns:CUserPrivilage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CUserPrivilage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserLog" type="tns:CUserLog" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrivilageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="State" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrivilageName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrivilageType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PrivilageValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fsPrivilageID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="foUPG" type="tns:CUPGroup" />
+            <s:element minOccurs="0" maxOccurs="1" name="fsAreaID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrivilageValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PrivilageValidResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="fsAreaID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fsPrivilageID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fsAreaID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersResult" type="tns:ArrayOfCUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CUser" nillable="true" type="tns:CUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserList2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sUnitID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sAreaID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sArrPrivilageID" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserList2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserList2Result" type="tns:ArrayOfCUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidPrivilageID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="AreaID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserListResult" type="tns:ArrayOfCUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserPasswordValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fsUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fsPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserPasswordValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UserPasswordValidResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDept">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deptCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllDeptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllDeptResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deptCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPrivilage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="privilagetype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPrivilageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPrivilageResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetNewUPGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewUPGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetNewUPGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewUPGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrivilageValidSoapIn">
+    <wsdl:part name="parameters" element="tns:PrivilageValid" />
+  </wsdl:message>
+  <wsdl:message name="PrivilageValidSoapOut">
+    <wsdl:part name="parameters" element="tns:PrivilageValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserList2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserList2" />
+  </wsdl:message>
+  <wsdl:message name="GetUserList2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserList2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetUserListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserList" />
+  </wsdl:message>
+  <wsdl:message name="GetUserListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserListResponse" />
+  </wsdl:message>
+  <wsdl:message name="UserPasswordValidSoapIn">
+    <wsdl:part name="parameters" element="tns:UserPasswordValid" />
+  </wsdl:message>
+  <wsdl:message name="UserPasswordValidSoapOut">
+    <wsdl:part name="parameters" element="tns:UserPasswordValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeptSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllDept" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeptSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllDeptResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUser" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPrivilageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPrivilage" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPrivilageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPrivilageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CSrvUserValidSoap">
+    <wsdl:operation name="GetNewUPGroup">
+      <wsdl:input message="tns:GetNewUPGroupSoapIn" />
+      <wsdl:output message="tns:GetNewUPGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PrivilageValid">
+      <wsdl:input message="tns:PrivilageValidSoapIn" />
+      <wsdl:output message="tns:PrivilageValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input message="tns:GetUsersSoapIn" />
+      <wsdl:output message="tns:GetUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList2">
+      <wsdl:input message="tns:GetUserList2SoapIn" />
+      <wsdl:output message="tns:GetUserList2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <wsdl:input message="tns:GetUserListSoapIn" />
+      <wsdl:output message="tns:GetUserListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UserPasswordValid">
+      <wsdl:input message="tns:UserPasswordValidSoapIn" />
+      <wsdl:output message="tns:UserPasswordValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDept">
+      <wsdl:input message="tns:GetAllDeptSoapIn" />
+      <wsdl:output message="tns:GetAllDeptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <wsdl:input message="tns:GetAllUserSoapIn" />
+      <wsdl:output message="tns:GetAllUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPrivilage">
+      <wsdl:input message="tns:GetAllPrivilageSoapIn" />
+      <wsdl:output message="tns:GetAllPrivilageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CSrvUserValidSoap" type="tns:CSrvUserValidSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetNewUPGroup">
+      <soap:operation soapAction="http://tempuri.org/GetNewUPGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrivilageValid">
+      <soap:operation soapAction="http://tempuri.org/PrivilageValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList2">
+      <soap:operation soapAction="http://tempuri.org/GetUserList2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserList">
+      <soap:operation soapAction="http://tempuri.org/GetUserList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserPasswordValid">
+      <soap:operation soapAction="http://tempuri.org/UserPasswordValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDept">
+      <soap:operation soapAction="http://tempuri.org/GetAllDept" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUser">
+      <soap:operation soapAction="http://tempuri.org/GetAllUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPrivilage">
+      <soap:operation soapAction="http://tempuri.org/GetAllPrivilage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CSrvUserValid">
+    <wsdl:port name="CSrvUserValidSoap" binding="tns:CSrvUserValidSoap">
+      <soap:address location="http://aicweb05/UserWeb/WebService/CSrvUserValid.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,170 @@
+﻿body
+{
+    margin:0px;
+    padding:0px;
+	background-color:#f8f8f8;
+}
+
+body,form,h1,h2,h3,h4,div,span,p,row{
+    margin:0px;
+    padding:0px;
+}
+
+.row{
+    background-color:#ffffff;
+}
+/*====================================== Text ======================================*/
+/********************************************** Writing */
+.text-menu {
+    font-family:"宋体";
+	font-size: 14px;
+	color: #ffffff;
+	font-weight:bold;
+	text-align:center;
+	width:94px;
+	height:30px;
+	padding-top:9px;
+	background-image:url(../images/menu_bg2.gif);
+	background-repeat:no-repeat;
+}
+.text-date {
+	font-family:"宋体";
+	font-size: 12px;
+	color: #666666;
+	text-align:right;
+	padding-right:10px;
+}
+.text-gre-b-14 {
+	font-family:"宋体";
+	font-size: 14px;
+	color: #1E5C05;
+	font-weight:bold;
+}
+.text-bla-b-14 {
+	font-family:"宋体";
+	font-size: 14px;
+	color: #666666;
+	font-weight:bold;
+}
+.text-blu-12 {
+	font-family:"宋体";
+	font-size: 12px;
+	color: #0033CC;
+}
+.text-red-12 {
+	font-family:"宋体";
+	font-size: 12px;
+	color: #ff0000;
+}
+.text-hui-12 {
+	font-family:"宋体";
+	font-size: 12px;
+	color: #666666;
+}
+.text-bla-12 {
+	font-family:"宋体";
+	font-size: 12px;
+	color: #000000;
+}
+/********************************************** Link */
+.link-menu {
+    font-family:"宋体";
+	font-size: 14px;
+	color: #666666;
+	font-weight:bold;
+    text-decoration:none;
+	text-align:center;
+	width:94px;
+	height:24px;
+	padding-top:15px;
+	background-image:url(../images/menu_bg1.gif);
+	background-repeat:no-repeat;
+	display:block;
+}
+.link-menu:hover {
+	color: #ffffff;
+	background-image:url(../images/menu_bg2.gif);
+}
+.link-gre-12 {
+    font-family:"宋体";
+	font-size: 12px;
+	color: #1E5C05;
+    text-decoration:none;
+}
+.link-gre-12:hover {
+    color: #ff0000;
+	text-decoration:underline;
+}
+.link-n-left-list {
+    font-family:"宋体";
+	font-size: 12px;
+	color: #333333;
+    text-decoration:none;
+	padding-left:10px;
+}
+.link-n-left-list:hover {
+	color: #D10101;
+	text-decoration:underline;
+}
+.link-red-12 {
+    font-family:"宋体";
+	font-size: 12px;
+	color: #ff0000;
+    text-decoration:none;
+}
+.link-red-12:hover {
+    color: #3366CC;
+	text-decoration:underline;
+}
+.link-bla-12 {
+    font-family:"宋体";
+	font-size: 12px;
+	color: #000000;
+    text-decoration:none;
+}
+.link-bla-12:hover {
+    color: #ff0000;
+	text-decoration:underline;
+}
+.link-blu-12 {
+    font-family:"宋体";
+	font-size: 12px;
+	color: #1861B3;
+    text-decoration:none;
+}
+.link-blu-12:hover {
+	color: #FF0000;
+	text-decoration:underline;
+}
+/*====================================== Form ======================================*/
+.inp1{
+	width:230px;
+	height:20px;
+	font-family: "宋体";
+	font-size: 14px;
+	color: #000;
+	border: 1px solid #999999;
+	line-height: 18px;
+	background-color: #fff;
+}
+/*====================================== Bg ======================================*/
+.n-bg1 {
+	background-image:url(../images/n1.jpg);
+	background-repeat: no-repeat;
+	background-position: top;
+}
+
+.bt-hui {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #383838;
+}
+.bt-hui1 {
+	font-family: "宋体";
+	font-size: 15px;
+	font-weight: bold;
+	color: #7E7E7E;
+}
+
+/*====================================== DIV ======================================*/
