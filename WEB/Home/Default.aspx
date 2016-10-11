@@ -111,7 +111,7 @@
                               <td height="30" colspan="3" class="text-gre-b-14">新办证书</td>
                             </tr>
                             <tr>
-                              <td width="122"><a href="#" ><img src="../images/li1.jpg" width="122" height="94" border="0" /></a></td>
+                              <td width="122"><a href="../Cert/default.aspx?m=CertApply&staus=1" ><img src="../images/li1.jpg" width="122" height="94" border="0" /></a></td>
                               <td align="center"><a href="../Cert/default.aspx?m=SearchTemp"><img src="../images/li2.jpg" width="122" height="94" border="0" /></a></td>
                               <td width="122"><a href="../Cert/default.aspx?m=Search"><img src="../images/li3.jpg" width="122" height="94" border="0" /></a></td>
                             </tr>
