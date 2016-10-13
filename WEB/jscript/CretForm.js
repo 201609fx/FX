@@ -8,7 +8,7 @@ Cert._tbDocumInfo;//送审资料信息
 
 
 //前端添加数据到 维修业务范围table
-Cert.addFontFixBus = function () {
+Cert.addFrontFixBus = function () {
     var busType = $("#selFixBusType option:selected").text();
     if (busType == "请选择类别") {
         alert("未选择\"维修业务类型范围\"");
@@ -23,7 +23,7 @@ Cert.delFontFixBus = function (vThis) {
 }
 
 //前端添加数据到 特约维修业务品牌table
-Cert.addFontFixBusName = function () {
+Cert.addFrontFixBusName = function () {
     var busName = $("#tbxFixBusName").val();
     if (busName && busName.length > 0) {
         busName.trim();
@@ -40,7 +40,7 @@ Cert.delFontFixBusName = function () {
 }
 
 //前端添加数据到 人员信息table
-Cert.addFontPesonInfos = function () {
+Cert.addFrontPesonInfos = function () {
     var personType = $(".rdoPesonType:checked").val();
     var name = $("#tbxName").val().trim();
     var eduLevel = $("#selEduLevel option:selected").text();
@@ -70,7 +70,7 @@ Cert.delFontPesonInfos = function () {
 }
 
 //前端添加数据到 维修安装设备table
-Cert.addFontFixTool = function () {
+Cert.addFrontFixTool = function () {
     var toolType = $(".rdoToolType:checked").val();
     var toolName = $("#tbxToolName").val().trim();
     var toolNumber = $("#tbxToolNumber").val().trim();
@@ -94,7 +94,7 @@ Cert.delFontFixTool = function () {
 }
 
 //前端添加数据到 送审资料信息table
-Cert.addFontDocumInfo = function () {
+Cert.addFrontDocumInfo = function () {
 
 }
 Cert.delFontDocumInfo = function () {
@@ -114,19 +114,19 @@ $(document).ready(function () {
 
 
     $("#btnAddFixBus").click(function () {
-        Cert.addFontFixBus();
+        Cert.addFrontFixBus();
     })
     $("#btnAddFixBusName").click(function () {
-        Cert.addFontFixBusName();
+        Cert.addFrontFixBusName();
     })
     $("#btnAddPerson").click(function () {
-        Cert.addFontPesonInfos();
+        Cert.addFrontPesonInfos();
     })
 
 
 
     $("#btnToolAdd").click(function () {
-        Cert.addFontFixTool();
+        Cert.addFrontFixTool();
     })
 
 
