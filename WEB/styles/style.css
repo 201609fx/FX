@@ -79,7 +79,7 @@ body,form,h1,h2,h3,h4,div,span,p,row{
 	padding-top:15px;
 	background-image:url(../images/menu_bg1.gif);
 	background-repeat:no-repeat;
-	display:block;
+	display:inherit;
 }
 .link-menu:hover {
 	color: #ffffff;
