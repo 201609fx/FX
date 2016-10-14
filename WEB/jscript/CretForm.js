@@ -35,9 +35,6 @@ Cert.addFrontFixBusName = function () {
     htmlStr += "<tr><td>" + busName + "</td><td><div class='btn btn-default'>删除</div></td></tr>";
     tbody.html(htmlStr);
 }
-Cert.delFontFixBusName = function () {
-
-}
 
 //前端添加数据到 人员信息table
 Cert.addFrontPesonInfos = function () {
