@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="styles/style.css" rel="stylesheet" type="text/css" />
-    <link href="public/bootstrap3.3.5/css/bootstrap.css" rel="stylesheet" />
+    <%-- <link href="public/bootstrap3.3.5/css/bootstrap.css" rel="stylesheet" />
     <link href="public/font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet" />
     <script src="public/jquery1.11.3/jquery1.11.3.min.js"></script>
-    <script src="public/bootstrap3.3.5/js/bootstrap.js"></script>
+    <script src="public/bootstrap3.3.5/js/bootstrap.js"></script>--%>
     <title>深圳市市场监督管理局维修监管系统</title>
 </head>
 <body>
@@ -83,12 +83,15 @@
                 <td height="60" background="../images/y2.gif">
                     <table width="955" border="0" align="center" cellpadding="0" cellspacing="0" class="text-bla-12">
                         <tr>
-                            <td width="50" rowspan="2">
+                            <td width="50" rowspan="3">
                                 <img src="../images/zz.jpg" width="35" height="43" /></td>
                             <td height="18">版权所有：深圳市服务行业协会 地址：深圳市华强南路无线电管理大厦 九楼西 邮编：518033</td>
                         </tr>
                         <tr>
                             <td>电话：86-755 83283815 83288295 传真：86-755 83288295 邮箱：xiehui@szzsfx.com peixun@szzsfx.com 网站设计：深圳市标准技术研究院 信息技术中心</td>
+                        </tr>
+                        <tr>
+                            <td ><p style="color: red;font-weight: bold;">建议使用Internet Explorer 8.0以上版本或其他浏览器最新版本访问本网站，以达到最优使用体验.</p></td>
                         </tr>
                     </table>
                 </td>
@@ -98,5 +101,8 @@
             </tr>
         </table>
     </form>
+    <p style="display:inline-block;margin-bottom:20px">
+
+    </p>
 </body>
 </html>
