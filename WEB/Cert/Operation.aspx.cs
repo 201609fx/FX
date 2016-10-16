@@ -61,7 +61,7 @@ public partial class Cert_Operation : SZMA.Core.Client.BasePageByPage
             case "del":
                 {
                     rtn = MyDAL.Delete(e.CommandArgument.ToString());
-                    Common.Update("MainSCTemp", "ID", Request.QueryString["id"], new string[] { "operation" }, new string[] { "" });
+                   // Common.Update("MainSCTemp", "ID", Request.QueryString["id"], new string[] { "operation" }, new string[] { "" });
                     if (rtn > 0)
                     {
                         gvListData_Init();

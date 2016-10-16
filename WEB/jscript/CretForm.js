@@ -79,12 +79,22 @@ Cert.addFrontFixBusName = function () {
 //前端添加数据到 人员信息table
 Cert.addFrontPesonInfos = function () {
     var personType = $(".rdoPesonType:checked").val();
+    var personTypeId = 1;
+    if (personType == "管理/专业技术人员") {
+        personTypeId = 2;
+    }
+
     var name = $("#tbxName").val().trim();
     var eduLevel = $("#selEduLevel option:selected").text().trim();
     var post = $("#tbxPost").val().trim();
     var certName = $("#tbxCertName option:selected").text().trim();
     var certNo = $("#tbxCertNo").val().trim();
     var mark = $("#tbxMark").val().trim();
+
+    var markDisplay = mark;
+    if (mark&&mark.length>3) {
+        markDisplay = mark.substring(0, 3)+"..";
+    }
 
     var erreMsg = "";
     if (!Cert.checkEmptyOrNull(personType)) {
@@ -121,13 +131,13 @@ Cert.addFrontPesonInfos = function () {
     }
 
     var rowStr = "<tr>";
-    rowStr += "<td title='" + personType + "'>" + personType + "</td>";
+    rowStr += "<td title='" + personTypeId + "'>" + personType + "</td>";
     rowStr += "<td title='" + name + "'>" + name + "</td>";
     rowStr += "<td title='" + eduLevel + "'>" + eduLevel + "</td>";
     rowStr += "<td title='" + post + "'>" + post + "</td>";
     rowStr += "<td title='" + certName + "'>" + certName + "</td>";
     rowStr += "<td title='" + certNo + "'>" + certNo + "</td>";
-    rowStr += "<td title='" + mark + "'>" + mark + "</td>";
+    rowStr += "<td title='" + mark + "'>" + markDisplay + "</td>";
     rowStr += "<td><div class='btn btn-default btnDel'>删除</div></td>";
     rowStr += "</tr>";
 
@@ -236,5 +246,23 @@ $(document).ready(function () {
     $("#certForm").on("click", ".btnDel", function () {
         $(this).closest("tr").remove();
     });
+
+
+
+    //显示人员添加面板
+    $("#btnShowdivPersonAdd").click(function () {
+        $("#divPersonAdd").css("display", "block");
+    })
+    $("#btnAddPersonCancel").click(function () {
+        $("#divPersonAdd").css("display", "none");
+    })
+
+    //显示设备添加面板
+    $("#btnShowdivToolAdd").click(function () {
+        $("#divToolAdd").css("display", "block");
+    })
+    $("#btnAddToolAddCancel").click(function () {
+        $("#divToolAdd").css("display", "none");
+    })
 
 });

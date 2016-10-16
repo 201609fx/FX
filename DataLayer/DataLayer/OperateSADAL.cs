@@ -52,5 +52,14 @@ namespace SZMA.DataLayer
             return dbHelper.ExecuteNonQuery(ConnectionString, CommandType.StoredProcedure, "OperateSA_Delete", paras);
         }
 
+        public int Delete(string ID,string busName)
+        {
+            IDataParameter[] paras = {
+	        dbHelper.GetParameter("@ID", ID)
+        };
+
+            return dbHelper.ExecuteNonQuery(ConnectionString, CommandType.Text, "  Delete From [MainSCID] Where MainSCID='" + ID + "'  and brand ='" + busName + "'");
+        }
+
     }
 }
