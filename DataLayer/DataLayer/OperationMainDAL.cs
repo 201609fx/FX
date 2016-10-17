@@ -105,6 +105,10 @@ namespace SZMA.DataLayer
 
             return dbHelper.ExecuteNonQuery(ConnectionString, CommandType.StoredProcedure, "OperationMain_Delete", paras);
         }
+        public int Delete(string ID,string busTypeId)
+        {
+            return dbHelper.ExecuteNonQuery(ConnectionString, CommandType.Text, "Delete From OperationMain Where MainSCID='"+ID+"'  and productId='" + busTypeId + "'");
+        }
 
         public int Update(string ProductID, string UserName, DateTime ModiTime, string ID)
         {

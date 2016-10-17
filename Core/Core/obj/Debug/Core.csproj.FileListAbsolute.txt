@@ -12,3 +12,17 @@ Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\SZMA.Core.AspNetPager.resources
 Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\Core.csproj.GenerateResource.Cache
 Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\SZMA.Core.dll
 Z:\F\FX\Code\szfx\0920\SZMA\Core\Core\obj\Debug\SZMA.Core.pdb
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\SZMA.Core.dll.config
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\SZMA.Core.dll
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\SZMA.Core.pdb
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\FreeTextBox.dll
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\SZMA.DataLayer.dll
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\GotDotNet.ApplicationBlocks.Data.dll
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\SZMA.BLL.dll
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\SZMA.DataLayer.pdb
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\bin\Debug\SZMA.BLL.pdb
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\obj\Debug\SZMA.Core.AspNetPager.resources
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\obj\Debug\Core.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\obj\Debug\SZMA.Core.dll
+C:\Users\Administrator\Documents\GitHub\FX\Core\Core\obj\Debug\SZMA.Core.pdb

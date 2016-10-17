@@ -21,7 +21,7 @@ public partial class Service_command : System.Web.UI.Page
                     switch (Request["cmd"])
                     {
                         //管理维修业务类型
-                        case "addBusType":                            
+                        case "addBusType":
                             result = ManageBusType("add");
                             break;
                         case "delBusType":
@@ -32,7 +32,7 @@ public partial class Service_command : System.Web.UI.Page
                             break;
 
                         //管理特约维修业务品牌
-                        case "addBusName":                            
+                        case "addBusName":
                             result = ManageBusName("add");
                             break;
                         case "delBusName":
@@ -53,6 +53,17 @@ public partial class Service_command : System.Web.UI.Page
                             result = ManagePerson("get");
                             break;
 
+                        //管理设备
+                        case "addTool":
+                            result = ManageTool("add");
+                            break;
+                        case "delTool":
+                            result = ManageTool("del");
+                            break;
+                        case "getTool":
+                            result = ManageTool("get");
+                            break;
+
 
                         default:
                             break;
@@ -70,12 +81,78 @@ public partial class Service_command : System.Web.UI.Page
         }
     }
 
+
+    /// <summary>
+    /// 管理设备
+    /// </summary>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    private string ManageTool(string p)
+    {
+        string msg = "";
+        string id = GetPageParam(Page, "id");
+        string toolType = GetPageParam(Page, "toolType"); //1:交通工具 2:其它仪器设备
+        string toolName = GetPageParam(Page, "toolName");
+        string toolNumber = GetPageParam(Page, "toolNumber");
+        string toolCount = GetPageParam(Page, "toolCount");
+
+        if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(toolType))
+        {
+            return "参数错误.";
+        }
+
+        equipmentDAL MyDAL = new equipmentDAL();
+        int rtn = 0;
+
+        switch (p)
+        {
+            case "add":
+                if (string.IsNullOrEmpty(toolName) || string.IsNullOrEmpty(toolNumber) || string.IsNullOrEmpty(toolCount))
+                {
+                    return "参数错误:填写不完全";
+                }
+                rtn = MyDAL.Insert(toolName, toolCount, toolNumber, toolType, id);
+
+                if (rtn > 0)
+                {
+                    msg = "0#成功";
+                }
+                else
+                {
+                    msg = "1#失败";
+                }
+
+                break;
+            case "del":
+                rtn = MyDAL.Delete(id, toolType, toolName, toolNumber);
+                if (rtn > 0)
+                {
+                    msg = "0#成功";
+                }
+                else
+                {
+                    msg = "1#失败";
+                }
+                break;
+            case "get":
+                int recc;
+                DataSet dsElist1 =
+               Common.Pager("equipment", "ID,Num,des,Type,Model,MainSCID", "ID", 100, 1, true, "MainSCID='" + id + "' and Type=" + toolType + " and InsertFlag=1",
+                            out recc);
+                msg = JsonConvert.SerializeObject(dsElist1);
+                break;
+            default:
+                break;
+        }
+        return msg;
+    }
+
     //管理人员
     private string ManagePerson(string p)
     {
         string msg = "";
         string id = GetPageParam(Page, "id");
-        string personTypeId = GetPageParam(Page, "personTypeId");
+        string personTypeId = GetPageParam(Page, "personTypeId"); //1:管理/专业技术人员 2:安装/维修人员
         string name = GetPageParam(Page, "name");
         string eduLevel = GetPageParam(Page, "eduLevel");
         string post = GetPageParam(Page, "post");
@@ -112,8 +189,7 @@ public partial class Service_command : System.Web.UI.Page
 
                 break;
             case "del":
-
-
+                rtn = MyDAL.Delete(name, eduLevel, post, id, personTypeId);
                 if (rtn > 0)
                 {
                     msg = "0#成功";
@@ -124,17 +200,15 @@ public partial class Service_command : System.Web.UI.Page
                 }
                 break;
             case "get":
-                int recc = 0;
-                DataSet ds =
-                Common.Pager("OperateSA", "ID,brand,MainSCID", "ID", 100, 1, false, "MainSCID='" + id + "'",
-                             out recc);
-                msg = JsonConvert.SerializeObject(ds);
+                int recc;
+                DataSet dsMemployee =
+                    Common.Pager("employee", "ID,Name,educational,Eposition,certNO,remark,CertName,CertType,(select CertName from Dict_Cert where Dict_Cert.ID=employee.CertType) as dictCertName", "ID", 100, 1, false, "MainSCID='" + id + "' and Type=" + personTypeId + " and InsertFlag=1",
+                                 out recc);
+                msg = JsonConvert.SerializeObject(dsMemployee);
                 break;
             default:
                 break;
         }
-
-
         return msg;
     }
 
@@ -229,22 +303,7 @@ public partial class Service_command : System.Web.UI.Page
         switch (op)
         {
             case "add":
-                if (busTypeId.Trim() == "0")
-                {
-                    this.Response.Write("<script language=javascript>alert('请先选择类别!')</script>");
-
-                }
-                if (busTypeId.Trim() == "abc")
-                {
-                    if (MyDAL.SelectOther(Request.QueryString["id"]).Tables[0].Rows.Count > 0)
-                    {
-                        this.Response.Write("<script language=javascript>alert('只能存在一个其他类!!!')</script>");
-                    }
-                }
-                else
-                {
-                    rtn = MyDAL.Insert(Request.QueryString["id"], busTypeId, "", DateTime.Now);
-                }
+                rtn = MyDAL.Insert(id, busTypeId, "", DateTime.Now);
                 if (rtn > 0)
                 {
                     msg = "0#添加成功";
@@ -256,7 +315,7 @@ public partial class Service_command : System.Web.UI.Page
 
                 break;
             case "del":
-                rtn = MyDAL.Delete(busTypeId);
+                rtn = MyDAL.Delete(id,busTypeId);
                 if (rtn > 0)
                 {
                     msg = "0#成功";

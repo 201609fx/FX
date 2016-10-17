@@ -344,10 +344,10 @@
                                 <label class="col-xs-2 control-label ">设备类型</label>
                                 <div class="col-xs-10 row ">
                                     <label class="radio-inline">
-                                        <input class="rdoToolType" type="radio" name="toolType" checked="checked" value="交通工具">交通工具
+                                        <input class="rdoToolType" type="radio" name="toolType" checked="checked" value="1" title="交通工具">交通工具
                                     </label>
                                     <label class="radio-inline">
-                                        <input class="rdoToolType" type="radio" name="toolType" value="其它仪器">其它仪器
+                                        <input class="rdoToolType" type="radio" name="toolType" value="2" title="其它仪器">其它仪器
                                     </label>
                                 </div>
                             </div>

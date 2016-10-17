@@ -81,5 +81,10 @@ namespace SZMA.DataLayer
             return dbHelper.ExecuteNonQuery(ConnectionString, CommandType.StoredProcedure, "employee_Delete", paras);
         }
 
+        public int Delete(string Name, string educational, string Eposition,string MainSCID, string Type)
+        {
+            return dbHelper.ExecuteNonQuery(ConnectionString, CommandType.Text, "Delete From [employee] Where MainSCID='" + MainSCID + "' and type='" + Type + "' and Name='" + Name + "' and educational='" + educational + "' and eposition='" + Eposition + "'");
+        }
+
     }
 }

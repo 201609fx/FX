@@ -5,7 +5,8 @@ Cert._tbFixBusName;//特约维修业务品牌Table对象
 Cert._tbPesonInfo;//人员信息
 Cert._tbFixTool;//维修安装设备
 Cert._tbDocumInfo;//送审资料信息
-
+Cert._ID;//申请单ID
+Cert._ajaxUrl = "/service/command.aspx";
 
 //验证是否为null
 Cert.checkEmptyOrNull = function (str) {
@@ -24,6 +25,9 @@ Cert.checkIsNumber = function (str) {
     return true;
 }
 
+
+
+
 //前端添加数据到 维修业务范围table
 Cert.addFrontFixBus = function () {
     var busType = $("#selFixBusType option:selected").text().trim();
@@ -41,12 +45,67 @@ Cert.addFrontFixBus = function () {
             return;
         }
     }
+    var busTypeId = $("#selFixBusType option:selected").val().trim();
 
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "addBusType", id: Cert._ID, busTypeId: busTypeId },
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0]=="0") {
+                    var tbody = Cert._tbFixBus.find("tbody").eq(0);
+                    var htmlStr = tbody.html();
+                    htmlStr += "<tr><td title='" + busTypeId + "'>" + busType + "</td><td><div class='btn btn-default btnDelBusType' onclick='Cert.DelBusType($(this))'>删除</div></td></tr>";
+                    tbody.html(htmlStr);
+                } else {
+                    alert("添加失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
+}
 
-    var tbody = Cert._tbFixBus.find("tbody").eq(0);
-    var htmlStr = tbody.html();
-    htmlStr += "<tr><td>" + busType + "</td><td><div class='btn btn-default btnDel'>删除</div></td></tr>";
-    tbody.html(htmlStr);
+Cert.DelBusType = function (vThis) {
+    var busTypeId = vThis.closest("tr").find("td").eq('0').attr("title");
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "delBusType", id: Cert._ID, busTypeId: busTypeId },
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0] == "0") {
+                    vThis.closest("tr").remove();
+                } else {
+                    alert("删除失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
 }
 
 
@@ -70,11 +129,68 @@ Cert.addFrontFixBusName = function () {
         }
     }
 
-    var tbody = Cert._tbFixBusName.find("tbody").eq(0);
-    var htmlStr = tbody.html();
-    htmlStr += "<tr><td>" + busName + "</td><td><div class='btn btn-default btnDel'>删除</div></td></tr>";
-    tbody.html(htmlStr);
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "addBusName", id: Cert._ID, busName: busName },
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0] == "0") {
+                    var tbody = Cert._tbFixBusName.find("tbody").eq(0);
+                    var htmlStr = tbody.html();
+                    htmlStr += "<tr><td>" + busName + "</td><td><div class='btn btn-default btnDelBusName' onclick='Cert.DelBusName($(this))'>删除</div></td></tr>";
+                    tbody.html(htmlStr);
+                } else {
+                    alert("添加失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
 }
+
+Cert.DelBusName = function (vThis) {
+    var busName = vThis.closest("tr").find("td").eq('0').text().trim();
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "delBusName", id: Cert._ID, busName: busName },
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0] == "0") {
+                    vThis.closest("tr").remove();
+                } else {
+                    alert("删除失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
+}
+
+
 
 //前端添加数据到 人员信息table
 Cert.addFrontPesonInfos = function () {
@@ -88,6 +204,7 @@ Cert.addFrontPesonInfos = function () {
     var eduLevel = $("#selEduLevel option:selected").text().trim();
     var post = $("#tbxPost").val().trim();
     var certName = $("#tbxCertName option:selected").text().trim();
+    var certNameVal = $("#tbxCertName option:selected").val().trim();
     var certNo = $("#tbxCertNo").val().trim();
     var mark = $("#tbxMark").val().trim();
 
@@ -130,33 +247,93 @@ Cert.addFrontPesonInfos = function () {
         }
     }
 
-    var rowStr = "<tr>";
-    rowStr += "<td title='" + personTypeId + "'>" + personType + "</td>";
-    rowStr += "<td title='" + name + "'>" + name + "</td>";
-    rowStr += "<td title='" + eduLevel + "'>" + eduLevel + "</td>";
-    rowStr += "<td title='" + post + "'>" + post + "</td>";
-    rowStr += "<td title='" + certName + "'>" + certName + "</td>";
-    rowStr += "<td title='" + certNo + "'>" + certNo + "</td>";
-    rowStr += "<td title='" + mark + "'>" + markDisplay + "</td>";
-    rowStr += "<td><div class='btn btn-default btnDel'>删除</div></td>";
-    rowStr += "</tr>";
-
-    var tbody = Cert._tbPesonInfo.find("tbody").eq(0);
-    var htmlStr = tbody.html();
-    htmlStr += rowStr;
-    tbody.html(htmlStr);
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "addPerson", id: Cert._ID, personTypeId: personTypeId, name: name, eduLevel: eduLevel, post: post, certName: certName, certNo: certNo, mark: mark },
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0] == "0") {
+                    var rowStr = "<tr>";
+                    rowStr += "<td title='" + personTypeId + "'>" + personType + "</td>";
+                    rowStr += "<td title='" + name + "'>" + name + "</td>";
+                    rowStr += "<td title='" + eduLevel + "'>" + eduLevel + "</td>";
+                    rowStr += "<td title='" + post + "'>" + post + "</td>";
+                    rowStr += "<td title='" + certNameVal + "'>" + certName + "</td>";
+                    rowStr += "<td title='" + certNo + "'>" + certNo + "</td>";
+                    rowStr += "<td title='" + mark + "'>" + markDisplay + "</td>";
+                    rowStr += "<td><div class='btn btn-default btnDelPerson' onclick='Cert.DelPerson($(this))'>删除</div></td>";
+                    rowStr += "</tr>";
+                    var tbody = Cert._tbPesonInfo.find("tbody").eq(0);
+                    var htmlStr = tbody.html();
+                    htmlStr += rowStr;
+                    tbody.html(htmlStr);
+                } else {
+                    alert("添加失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
 }
+Cert.DelPerson = function (vThis) {
+    var personTypeId = vThis.closest("tr").find("td").eq('0').attr("title").trim();
+    var name = vThis.closest("tr").find("td").eq('1').attr("title").trim();
+    var eduLevel = vThis.closest("tr").find("td").eq('2').attr("title").trim();
+    var post = vThis.closest("tr").find("td").eq('3').attr("title").trim();
+    var certName = vThis.closest("tr").find("td").eq('4').attr("title").trim();
+    var certNo = vThis.closest("tr").find("td").eq('5').attr("title").trim();
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "delPerson", id: Cert._ID, personTypeId: personTypeId, name: name, eduLevel: eduLevel, post: post, certName: certName, certNo: certNo },
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0] == "0") {
+                    vThis.closest("tr").remove();
+                } else {
+                    alert("删除失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
+}
+
 
 
 //前端添加数据到 维修安装设备table
 Cert.addFrontFixTool = function () {
     var toolType = $(".rdoToolType:checked").val();
+    var toolTypeName = $(".rdoToolType:checked").attr("title").trim();
     var toolName = $("#tbxToolName").val().trim();
     var toolNumber = $("#tbxToolNumber").val().trim();
     var toolCount = $("#tbxToolCount").val().trim();
 
     var erreMsg = "";
-    if (!Cert.checkEmptyOrNull(toolType)) {
+    if (!Cert.checkEmptyOrNull(toolTypeName)) {
         erreMsg += "设备类型;\n"
     }
     if (!Cert.checkEmptyOrNull(toolName)) {
@@ -191,23 +368,79 @@ Cert.addFrontFixTool = function () {
         }
     }
 
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "addTool", id: Cert._ID, toolType: toolType, toolName: toolName, toolNumber: toolNumber, toolCount: toolCount},
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0] == "0") {
+                    var rowStr = "<tr>";
+                    rowStr += "<td title='" + toolType + "'>" + toolTypeName + "</td>";
+                    rowStr += "<td title='" + toolName + "'>" + toolName + "</td>";
+                    rowStr += "<td title='" + toolNumber + "'>" + toolNumber + "</td>";
+                    rowStr += "<td title='" + toolCount + "'>" + toolCount + "</td>";
+                    rowStr += "<td><div class='btn btn-default btnDelTool' onclick='Cert.DelTool($(this))'>删除</div></td>";
+                    rowStr += "</tr>";
 
-
-
-
-    var rowStr = "<tr>";
-    rowStr += "<td title='" + toolType + "'>" + toolType + "</td>";
-    rowStr += "<td title='" + toolName + "'>" + toolName + "</td>";
-    rowStr += "<td title='" + toolNumber + "'>" + toolNumber + "</td>";
-    rowStr += "<td title='" + toolCount + "'>" + toolCount + "</td>";
-    rowStr += "<td><div class='btn btn-default btnDel'>删除</div></td>";
-    rowStr += "</tr>";
-
-    var tbody = Cert._tbFixTool.find("tbody").eq(0);
-    var htmlStr = tbody.html();
-    htmlStr += rowStr;
-    tbody.html(htmlStr);
+                    var tbody = Cert._tbFixTool.find("tbody").eq(0);
+                    var htmlStr = tbody.html();
+                    htmlStr += rowStr;
+                    tbody.html(htmlStr);
+                } else {
+                    alert("添加失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
 }
+
+Cert.DelTool = function (vThis) {
+    var toolType = vThis.closest("tr").find("td").eq('0').attr("title").trim();
+    var toolName = vThis.closest("tr").find("td").eq('1').attr("title").trim();
+    var toolNumber = vThis.closest("tr").find("td").eq('2').attr("title").trim();
+    var toolCount = vThis.closest("tr").find("td").eq('3').attr("title").trim();
+    $.ajax({
+        type: "post",
+        url: Cert._ajaxUrl,
+        cache: false,
+        timeout: 60000,
+        data: { cmd: "delTool", id: Cert._ID, toolType: toolType, toolName: toolName, toolNumber: toolNumber },
+        dataType: "text",
+        success: function (data) {
+            if (data) {
+                if (data.split('#')[0] == "0") {
+                    vThis.closest("tr").remove();
+                } else {
+                    alert("删除失败");
+                }
+            } else {
+                alert("请求发生错误,请重试.");
+            }
+        },
+        error: function () {
+            if (console) {
+                alert("请求发生错误");
+            } else {
+                alert("请求发生错误");
+            }
+        }
+    });
+}
+
+
 
 //前端添加数据到 送审资料信息table
 Cert.addFrontDocumInfo = function () {
@@ -227,7 +460,7 @@ $(document).ready(function () {
     Cert._tbPesonInfo = $("#tbPesonInfo");
     Cert._tbFixTool = $("#tbFixTool");
     Cert._tbDocumInfo = $("#tbDocumInfo");
-
+    Cert._ID = $("#applyNo").text().trim();//申请ID
 
     $("#btnAddFixBus").click(function () {
         Cert.addFrontFixBus();
