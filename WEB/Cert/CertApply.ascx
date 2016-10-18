@@ -401,7 +401,7 @@
                                 <td>企业营业执照复印件
                                 </td>
                                 <td>
-                                    <input type="text" value="0" id="gvCSFile_ctl02_txtNum" />
+                                    <input type="text" value="0" id="num1" />
                                 </td>
                             </tr>
                             <tr>
@@ -410,7 +410,7 @@
                                 <td>企业维修人员相关资职证书复印件
                                 </td>
                                 <td>
-                                    <input type="text" value="0" id="gvCSFile_ctl03_txtNum" />
+                                    <input type="text" value="0" id="num2" />
                                 </td>
                             </tr>
                             <tr>
@@ -419,7 +419,7 @@
                                 <td>对顾客明示的服务承诺具体条文
                                 </td>
                                 <td>
-                                    <input type="text" value="0" id="gvCSFile_ctl04_txtNum" />
+                                    <input type="text" value="0" id="num3" />
                                 </td>
                             </tr>
                             <tr>
@@ -428,7 +428,7 @@
                                 <td>企业内部管理制度
                                 </td>
                                 <td>
-                                    <input type="text" value="0" id="gvCSFile_ctl05_txtNum" />
+                                    <input type="text" value="0" id="num4" />
                                 </td>
                             </tr>
                             <tr>
@@ -437,7 +437,7 @@
                                 <td>维修单据样本（合同）
                                 </td>
                                 <td>
-                                    <input type="text" value="0" id="gvCSFile_ctl06_txtNum" />
+                                    <input type="text" value="0" id="num5" />
                                 </td>
                             </tr>
                             <tr>
@@ -446,7 +446,7 @@
                                 <td>其它资料
                                 </td>
                                 <td>
-                                    <input type="text" value="0" id="gvCSFile_ctl07_txtNum" />
+                                    <input type="text" value="0" id="num6" />
                                 </td>
                             </tr>
                         </table>

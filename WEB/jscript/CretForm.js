@@ -444,6 +444,28 @@ Cert.DelTool = function (vThis) {
 
 //前端添加数据到 送审资料信息table
 Cert.addFrontDocumInfo = function () {
+    var num1 = $("#num1").val().trim();
+    var num2 = $("#num2").val().trim();
+    var num3 = $("#num3").val().trim();
+    var num4 = $("#num4").val().trim();
+    var num5 = $("#num5").val().trim();
+    var num6 = $("#num6").val().trim();
+    if (Cert.checkIsNumber(num1)&&
+        Cert.checkIsNumber(num1)&&
+        Cert.checkIsNumber(num1)&&
+        Cert.checkIsNumber(num1)&&
+        Cert.checkIsNumber(num1)&&
+        Cert.checkIsNumber(num1)) {
+        //ok
+
+        //保存数据  返回是否成功.
+
+
+    } else {
+        alert("送审资料 填写数据异常");
+        return false;
+    }
+
 
 }
 Cert.delFontDocumInfo = function () {
