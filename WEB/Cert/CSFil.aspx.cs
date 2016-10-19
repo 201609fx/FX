@@ -34,7 +34,7 @@ public partial class Cert_CSFil : System.Web.UI.Page
                                             out recc);
             if (dsCSFile.Tables[0].Rows.Count < 1)
             {
-                dsCSFile.Tables[0].Rows.Add(new string[] { "0", "", "", "0" });
+                dsCSFile.Tables[0].Rows.Add(new string[] { "0", "0", "", "0" });
             }
             gvCSFile.DataSource = dsCSFile;
             gvCSFile.DataBind();

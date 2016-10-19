@@ -446,7 +446,7 @@ Cert.DelTool = function (vThis) {
 Cert.addFrontDocumInfo = function () {
     var num1 = $("#num1").val().trim();
     var num2 = $("#num2").val().trim();
-    var num3 = $("#num3").val().trim();
+    var num3 = $("#num3").val().trim()
     var num4 = $("#num4").val().trim();
     var num5 = $("#num5").val().trim();
     var num6 = $("#num6").val().trim();
@@ -465,10 +465,24 @@ Cert.addFrontDocumInfo = function () {
         alert("送审资料 填写数据异常");
         return false;
     }
-
-
 }
-Cert.delFontDocumInfo = function () {
+
+Cert.getCompanyInfo = function () {
+    var cmName = $("#tbxCommanyName").val();
+    var cmAddress = $("#tbxAddress").val();
+    var cmContentPerson = $("#tbxContentPerson").val();
+    var cmPhoneNo = $("#tbxPhoneNo").val();
+    var cmTelNo = $("#tbxTelNo").val();
+    var cmCodeNo = $("#tbxCodeNo").val();
+    var cmFaxNo = $("#tbxFaxNo").val();
+    var cmZone = $("#tbxZone  option:selected").text().trim();
+    var cmAllArea = $("#tbxAllArea").val();
+    var cmAllPerson = $("#tbxAllPerson").val();
+    var cmOwner = $("#tbxOwner").val();
+    var cmOwnerNo = $("#tbxOwnerNo").val();
+    var cmFixer = $("#tbxFixer").val();
+    var cmInstaller = $("#tbxInstaller").val();
+
 
 }
 

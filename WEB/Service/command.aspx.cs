@@ -64,6 +64,9 @@ public partial class Service_command : System.Web.UI.Page
                             result = ManageTool("get");
                             break;
 
+                        case "addCompanyInfo":
+                            result = ManageCompanyInfo("add");
+                            break;
 
                         default:
                             break;
@@ -79,6 +82,52 @@ public partial class Service_command : System.Web.UI.Page
             }
 
         }
+    }
+
+    private string ManageCompanyInfo(string p)
+    {
+        string msg = "";
+        string cmName = GetPageParam(Page, "cmName");
+        string cmAddress = GetPageParam(Page, "cmAddress");
+        string cmContentPerson = GetPageParam(Page, "cmContentPerson");
+        string cmPhoneNo = GetPageParam(Page, "cmPhoneNo");
+        string cmTelNo = GetPageParam(Page, "cmTelNo");
+        string cmCodeNo = GetPageParam(Page, "cmCodeNo");
+        string cmFaxNo = GetPageParam(Page, "cmFaxNo");
+        string cmZone = GetPageParam(Page, "cmZone");
+        string cmAllArea = GetPageParam(Page, "cmAllArea");
+        string cmAllPerson = GetPageParam(Page, "cmAllPerson");
+        string cmOwner = GetPageParam(Page, "cmOwner");
+        string cmFixer = GetPageParam(Page, "cmFixer");
+        string cmInstaller = GetPageParam(Page, "cmInstaller");
+
+        MainSCTempDAL obj = new MainSCTempDAL();
+        int i = getTypeID();
+        if (obj.Update(ddlAreaID.SelectedValue, Company, Address, Code, Contact, Phone, Mobile, Fax,
+                      Frdb, Ftel, Area, Anum, Mnum, Bnum, getTypeID(), Summary,
+                      DateTime.Now, 4, "", txtOldCertNO.Text, txtNewCertNO.Text, lblID.Text) > 0)
+        {
+            this.Response.Redirect("Default.aspx?m=CompanyView&id=" + lblID.Text);
+        }
+        else
+        {
+            this.Response.Write("<script language=javascript>alert('保存失败!!!" + lblID.Text + "')</script>");
+        }
+
+
+        return msg;
+    }
+    private int getTypeID()
+    {
+        int rtn = 1;
+        try
+        {
+            rtn = int.Parse( GetPageParam(Page, "type"));
+        }
+        catch
+        {
+        }
+        return rtn;
     }
 
 
