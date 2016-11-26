@@ -540,23 +540,59 @@ namespace SZMA.Core.Client
         public string GetInsertFlag(string InsertFlag)
         {
             string rtn = "";
+            //update: status display 11.7
             switch (InsertFlag)
             {
                 case "0":
                     rtn = "临时";
                     break;
                 case "1":
-                    rtn = "申请待审核";
+                    rtn = "网上申请初审";
                     break;
                 case "2":
-                    rtn = "申请未通过";
+                    rtn = "网上申请初审未通过";
                     break;
                 case "3":
-                    rtn = "申请通过";
+                    rtn = "网上申请初审通过";
                     break;
                 default:
                     break;
             }
+            //switch (InsertFlag)
+            //{
+            //    case "0":
+            //        rtn = "网上申请";
+            //        break;
+            //    case "1":
+            //        rtn = "书面资料审核";
+            //        break;
+            //    case "11":
+            //        rtn = "书面资料审核未通过";
+            //        break;
+            //    case "12":
+            //        rtn = "书面资料审核通过";
+            //        break;
+            //    case "2":
+            //        rtn = "现场评审";
+            //        break;
+            //    case "3":
+            //        rtn = "评审结论";
+            //        break;
+            //    case "4":
+            //        rtn = "处理通知";
+            //        break;
+            //    case "5":
+            //        rtn = "待审批";
+            //        break;
+            //    case "6":
+            //        rtn = "待领证";
+            //        break;
+            //    case "7":
+            //        rtn = "申请未通过";
+            //        break;
+            //    default:
+            //        break;
+            //}
             return rtn;
         }
         public string  getIstate(string state,string InsertFlag)
@@ -571,28 +607,63 @@ namespace SZMA.Core.Client
         public string getState(string state)
         {//0为申请；1为初审；2为评审；3为结论；4为通知；5为待领证
             string rtn = "";
+            //switch (state)
+            //{
+            //    case "0":
+            //        rtn = "申请";
+            //        break;
+            //    case "1":
+            //        rtn = "初审";
+            //        break;
+            //    case "11":
+            //        rtn = "初审未通过";
+            //        break;
+            //    case "12":
+            //        rtn = "初审通过";
+            //        break;
+            //    case "2":
+            //        rtn = "评审";
+            //        break;
+            //    case "3":
+            //        rtn = "结论";
+            //        break;
+            //    case "4":
+            //        rtn = "通知";
+            //        break;
+            //    case "5":
+            //        rtn = "待审批";
+            //        break;
+            //    case "6":
+            //        rtn = "待领证";
+            //        break;
+            //    case "7":
+            //        rtn = "申请未通过";
+            //        break;
+            //    default:
+            //        break;
+            //}
             switch (state)
             {
                 case "0":
-                    rtn = "申请";
+                    rtn = "网上申请";
                     break;
                 case "1":
-                    rtn = "初审";
+                    rtn = "书面资料审核";
                     break;
                 case "11":
-                    rtn = "初审未通过";
+                    rtn = "书面资料审核未通过";
                     break;
                 case "12":
-                    rtn = "初审通过";
+                    rtn = "书面资料审核通过";
                     break;
                 case "2":
-                    rtn = "评审";
+                    rtn = "现场评审";
                     break;
                 case "3":
-                    rtn = "结论";
+                    rtn = "评审结论";
                     break;
                 case "4":
-                    rtn = "通知";
+                    rtn = "处理通知";
                     break;
                 case "5":
                     rtn = "待审批";

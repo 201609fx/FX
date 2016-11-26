@@ -34,7 +34,10 @@ public partial class workaround_Default : SZMA.Core.Admin.PageBase
         //}
         if (!IsPostBack)
         {
-            show();
+            tbxDataStart.Text = string.Format("{0:d}", DateTime.Now.AddMonths(-2));
+            tbxDataEnd.Text = string.Format("{0:d}", DateTime.Now);
+
+           show();
         }
     }
     public void show()
@@ -66,6 +69,25 @@ public partial class workaround_Default : SZMA.Core.Admin.PageBase
         {
             rtn += " and MainSCTemp.Company like '%" + txtKey.Text + "%'";
         }
+
+        string ds = "";
+        string de = "";
+        try
+        {
+            ds = string.Format("{0:d}", Convert.ToDateTime(tbxDataStart.Text).AddDays(-1));
+            de = string.Format("{0:d}", Convert.ToDateTime(tbxDataEnd.Text).AddDays(1));
+        }
+        catch (Exception)
+        {
+            tbxDataStart.Text = string.Format("{0:d}", DateTime.Now.AddMonths(-2).AddDays(-1));
+            tbxDataEnd.Text = string.Format("{0:d}", DateTime.Now.AddDays(1));
+            ds = tbxDataStart.Text.Trim();
+            de = tbxDataEnd.Text.Trim();
+        }
+        rtn += " and  ModifiTime between  '" + ds + "' and '"+de+"' ";
+
+
+
         return rtn;
     }
     public void gvList_RowCommand(Object sender, GridViewCommandEventArgs e)

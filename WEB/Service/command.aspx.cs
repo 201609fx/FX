@@ -64,10 +64,25 @@ public partial class Service_command : System.Web.UI.Page
                             result = ManageTool("get");
                             break;
 
+                        //企业信息
                         case "addCompanyInfo":
-                            result = ManageCompanyInfo("add");
+                            result = ManageCompanyInfo("save");
+                            break;
+                        case "getCompanyInfo":
+                            result = ManageCompanyInfo("get");
                             break;
 
+                        //送审资料
+                        case "getDocumInfo":
+                            result = ManagerDocumInfo("get");
+                            break;
+                        case "updateDocumInfo":
+                            result =ManagerDocumInfo("update");
+                            break;
+                        //检查晋级申请是否合规
+                        case "checkLevel":
+                            result = CheckLevel();
+                            break;
                         default:
                             break;
                     }
@@ -84,35 +99,226 @@ public partial class Service_command : System.Web.UI.Page
         }
     }
 
+    private string CheckLevel()
+    {
+        string msg = "0#";
+        bool levelOk = true;
+
+        string oldCertNo = Page.Request["oldCertNo"];
+        if (!string.IsNullOrEmpty(oldCertNo))
+        {
+            oldCertNo = oldCertNo.Trim();
+            try
+            {
+
+                string str = oldCertNo.TrimEnd().Substring(oldCertNo.Length - 1, 1).ToLower();
+                if (str=="a")
+                {
+                    levelOk = false;
+                    return "1#证书 "+oldCertNo+" 是一级证书，不需要再提交晋级申请，若证书即将过期请点击'初次申请'";
+                }
+            }
+            catch (Exception)
+            { 
+
+            }
+
+            //确定时间是否在允许申请范围内
+            string sqlStr = "select top 1 * from [szwr].[dbo].[MainSC] where CertNO='" + oldCertNo + "' order by CreateTime desc";
+            DataSet ds = Common.SelectByPager(sqlStr);
+            if (ds.Tables.Count>0)
+            {
+                if (ds.Tables[0].Rows.Count>0)
+                {
+                    //获取创建时间
+                    try
+                    {
+                        string dateTimeStr = ds.Tables[0].Rows[0]["CreateTime"].ToString();
+                        if (!string.IsNullOrEmpty(dateTimeStr))
+                        {
+                            DateTime dateTime = Convert.ToDateTime(dateTimeStr);
+                            TimeSpan ts = DateTime.Now - dateTime;
+                            if (ts.Days>60||ts.Days<-60)
+                            {
+                                return "1#证书 "+oldCertNo+" 不在可申请晋级时间范围："+dateTime.AddMonths(10).GetDateTimeFormats('D')[0].ToString()+"~"+dateTime.AddMonths(14).GetDateTimeFormats('D')[0].ToString();
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    return "1#证书 "+oldCertNo+" 不存在，请检查";
+                }
+            }
+        }
+
+
+        return msg;
+    }
+
+
+    private int CheckUser(string cretNo)
+    {
+        //string cretNo = GetPageParam(Page, "cretNo");
+        //if (string.IsNullOrEmpty(cretNo))
+        //{
+        //    return "-1"; ;
+        //}
+
+        int count = 0;
+        string dateTimeStr = DateTime.Now.AddMonths(-3).ToShortDateString().ToString();
+        string sqlStr = "select * FROM employee where certNO ='" + cretNo + "' and CreateTime > '" + dateTimeStr + "'";
+        DataSet ds = Common.SelectByPager(sqlStr);
+        if (ds.Tables.Count>0)
+        {
+            count = ds.Tables[0].Rows.Count;
+        }
+        return count;
+    }
+
+    private string ManagerDocumInfo(string p)
+    {
+        string msg = "";
+        
+        int recc = 0;
+        switch (p)
+        {
+            case "get":
+                string id = GetPageParam(Page, "id");
+                DataSet dsCSFile = Common.Pager("CSFileDict],[CSlist", "CSlist.ID,CSlist.Num,CSFileDict.Name,CSFileDict.ID as cID", "cID", 100, 1, false, "CSlist.MainSCID='" + id + "' and CSlist.CSFileID=CSFileDict.ID ",
+                                            out recc);
+                if (recc > 0)
+                {
+                //msg:是否成功#是否晋级申请#是否审核通过#dt初始化数据
+                    msg += "0#";
+                    msg += JsonConvert.SerializeObject(dsCSFile.Tables[0]);
+                }
+                else
+                {
+                    msg = "1#未获取到数据";//失败
+                }
+                break;
+
+            case "update":
+                string docId = GetPageParam(Page, "id");
+                string numValue = GetPageParam(Page, "numValue");
+                int num = 0;
+                int doc = 0;
+                try
+                {
+                    num = Convert.ToInt32(numValue);
+                    doc = Convert.ToInt32(docId);
+                    CSFileDAL MyDAL = new CSFileDAL();
+                    int rtn = MyDAL.Update(numValue, docId);
+                    if (rtn>0)
+                    {
+                        msg = "0#保存成功";//成功
+                    }
+                }
+                catch (Exception)
+                {
+                    msg = "1#参数不正确";//失败
+                }                
+                break;
+            default:
+                break;
+        }
+
+
+        return msg;
+    }
+
     private string ManageCompanyInfo(string p)
     {
         string msg = "";
-        string cmName = GetPageParam(Page, "cmName");
-        string cmAddress = GetPageParam(Page, "cmAddress");
-        string cmContentPerson = GetPageParam(Page, "cmContentPerson");
-        string cmPhoneNo = GetPageParam(Page, "cmPhoneNo");
-        string cmTelNo = GetPageParam(Page, "cmTelNo");
-        string cmCodeNo = GetPageParam(Page, "cmCodeNo");
-        string cmFaxNo = GetPageParam(Page, "cmFaxNo");
-        string cmZone = GetPageParam(Page, "cmZone");
-        string cmAllArea = GetPageParam(Page, "cmAllArea");
-        string cmAllPerson = GetPageParam(Page, "cmAllPerson");
-        string cmOwner = GetPageParam(Page, "cmOwner");
-        string cmFixer = GetPageParam(Page, "cmFixer");
-        string cmInstaller = GetPageParam(Page, "cmInstaller");
-
+        string id = GetPageParam(Page, "id");
         MainSCTempDAL obj = new MainSCTempDAL();
-        int i = getTypeID();
-        if (obj.Update(ddlAreaID.SelectedValue, Company, Address, Code, Contact, Phone, Mobile, Fax,
-                      Frdb, Ftel, Area, Anum, Mnum, Bnum, getTypeID(), Summary,
-                      DateTime.Now, 4, "", txtOldCertNO.Text, txtNewCertNO.Text, lblID.Text) > 0)
+        int i = getTypeID();//申请、晋级
+
+        switch (p)
         {
-            this.Response.Redirect("Default.aspx?m=CompanyView&id=" + lblID.Text);
+            case "save":
+                string saveType = GetPageParam(Page, "saveType"); ; //添加参数 判断是保存还是提交 以作不同提示
+
+                string cmName = GetPageParam(Page, "cmName");
+                string cmAddress = GetPageParam(Page, "cmAddress");
+                string cmContacts = GetPageParam(Page, "cmContacts");
+                string cmPhoneNo = GetPageParam(Page, "cmPhoneNo");
+                string cmTelNo = GetPageParam(Page, "cmTelNo");
+                string cmCodeNo = GetPageParam(Page, "cmCodeNo");
+                string cmFaxNo = GetPageParam(Page, "cmFaxNo");
+                string cmZone = GetPageParam(Page, "cmZone");
+                string cmAllArea = GetPageParam(Page, "cmAllArea");
+                string cmAllPerson = GetPageParam(Page, "cmAllPerson");
+                string cmOwner = GetPageParam(Page, "cmOwner");
+                string cmOwnerNo = GetPageParam(Page, "cmOwnerNo");
+                string cmFixer = GetPageParam(Page, "cmFixer");
+                string cmInstaller = GetPageParam(Page, "cmInstaller");
+                string oldCertNo = GetPageParam(Page, "oldCertNo");
+                string newCertNo = GetPageParam(Page, "newCertNo");
+
+                if (obj.Update(cmZone, cmName, cmAddress, cmCodeNo, cmContacts, cmPhoneNo, cmTelNo, cmFaxNo,
+                      cmOwner, cmOwnerNo, cmAllArea, cmAllPerson, cmFixer, cmInstaller, i, "",
+                      DateTime.Now, 4, "", oldCertNo, newCertNo, id) > 0)
+                {
+                    string url = "Default.aspx?m=CompanyView&id=" + id + "&saveType=" + saveType;
+                    msg = "0#" + url;
+                }
+                else
+                {
+                    msg = "1#保存失败!!!" + id;
+                }
+                break;
+            case "get": 
+                int recc;
+                DataSet ds =
+                   Common.Pager("MainSCTemp", "*", "ID", 100, 1, true, "ID='" + id + "'",
+                                out recc);
+                if (recc > 0)
+                {
+                //msg:是否成功#是否晋级申请#是否审核通过#dt初始化数据
+                    msg += "0#";
+                    //晋级申请
+                    if (ds.Tables[0].Rows[0]["type"].ToString() == "2" || (i == 2))
+                    {
+                        msg += "0#";
+                        //pnlCert.Visible = true;
+                        //pnlSummary.Visible = true;
+                        //Label1.Text = "晋级申请";
+                    }
+                    else
+                    {
+                        msg += "1#";
+                    }
+                    //审核通过
+                    if (ds.Tables[0].Rows[0]["InsertFlag"].ToString() == "2")///审核通过后不能修改
+                    {
+                        msg += "0#";
+                        //pnlSuggest.Visible = true;
+                        //lblSuggest.Text = ds.Tables[0].Rows[0]["Suggest"].ToString();
+                    }
+                    else
+                    {
+                        msg += "1#";
+                    }
+                    msg += JsonConvert.SerializeObject(ds.Tables[0]) ;
+                }
+                else
+                {
+                    msg = "1#";//失败
+                }
+                break;
+
+            default:
+                break;
         }
-        else
-        {
-            this.Response.Write("<script language=javascript>alert('保存失败!!!" + lblID.Text + "')</script>");
-        }
+
+
+
 
 
         return msg;
@@ -122,7 +328,7 @@ public partial class Service_command : System.Web.UI.Page
         int rtn = 1;
         try
         {
-            rtn = int.Parse( GetPageParam(Page, "type"));
+            rtn = int.Parse(GetPageParam(Page, "type"));
         }
         catch
         {
@@ -188,7 +394,10 @@ public partial class Service_command : System.Web.UI.Page
                 DataSet dsElist1 =
                Common.Pager("equipment", "ID,Num,des,Type,Model,MainSCID", "ID", 100, 1, true, "MainSCID='" + id + "' and Type=" + toolType + " and InsertFlag=1",
                             out recc);
-                msg = JsonConvert.SerializeObject(dsElist1);
+                if (dsElist1!=null&&dsElist1.Tables.Count>0)
+                {
+                    msg = JsonConvert.SerializeObject(dsElist1.Tables[0]);
+                }
                 break;
             default:
                 break;
@@ -211,7 +420,7 @@ public partial class Service_command : System.Web.UI.Page
 
         if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(personTypeId))
         {
-            return "参数错误.";
+            return "1#参数错误.";
         }
 
         EmployeeDAL MyDAL = new EmployeeDAL();
@@ -222,8 +431,17 @@ public partial class Service_command : System.Web.UI.Page
             case "add":
                 if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(eduLevel) || string.IsNullOrEmpty(post) || string.IsNullOrEmpty(certName) || string.IsNullOrEmpty(certNo))
                 {
-                    return "参数错误:填写不完全";
+                    return "1#参数错误:填写不完全";
                 }
+
+                //验证证书是否在最近3个月内存在
+                int t = CheckUser(certNo);
+                if (t>0)
+                {
+                    msg = "1#该人员最近已被添加过，不允许重复添加.";
+                    return msg;
+                }
+
 
                 rtn = MyDAL.Insert(name, eduLevel, post, certNo, certName, "0", mark, personTypeId, id);
 
@@ -253,7 +471,10 @@ public partial class Service_command : System.Web.UI.Page
                 DataSet dsMemployee =
                     Common.Pager("employee", "ID,Name,educational,Eposition,certNO,remark,CertName,CertType,(select CertName from Dict_Cert where Dict_Cert.ID=employee.CertType) as dictCertName", "ID", 100, 1, false, "MainSCID='" + id + "' and Type=" + personTypeId + " and InsertFlag=1",
                                  out recc);
-                msg = JsonConvert.SerializeObject(dsMemployee);
+                if (dsMemployee != null && dsMemployee.Tables.Count > 1)
+                {
+                    msg = JsonConvert.SerializeObject(dsMemployee.Tables[0]);
+                }
                 break;
             default:
                 break;
@@ -270,9 +491,9 @@ public partial class Service_command : System.Web.UI.Page
     {
         string msg = "";
         string id = GetPageParam(Page, "id");
-        string busName = GetPageParam(Page, "busName");
+        string busName = "";
 
-        if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(busName))
+        if (string.IsNullOrEmpty(id))
         {
             return "参数错误.";
         }
@@ -283,6 +504,7 @@ public partial class Service_command : System.Web.UI.Page
         switch (p)
         {
             case "add":
+                busName=GetPageParam(Page, "busName");
                 if (string.IsNullOrEmpty(busName))
                 {
                     return "busName参数错误.";
@@ -299,6 +521,7 @@ public partial class Service_command : System.Web.UI.Page
 
                 break;
             case "del":
+                busName = GetPageParam(Page, "busName");
                 if (string.IsNullOrEmpty(busName))
                 {
                     return "busName参数错误.";
@@ -318,7 +541,11 @@ public partial class Service_command : System.Web.UI.Page
                 DataSet ds =
                 Common.Pager("OperateSA", "ID,brand,MainSCID", "ID", 100, 1, false, "MainSCID='" + id + "'",
                              out recc);
-                msg = JsonConvert.SerializeObject(ds);
+                if (ds!=null&&ds.Tables.Count>1)
+                {
+                    msg = JsonConvert.SerializeObject(ds.Tables[0]);
+                }
+                
                 break;
             default:
                 break;
@@ -338,13 +565,13 @@ public partial class Service_command : System.Web.UI.Page
     {
         string msg = "";
         string id = GetPageParam(Page, "id");
-        string busTypeId = GetPageParam(Page, "busTypeId");
+        
 
-        if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(busTypeId))
+        if (string.IsNullOrEmpty(id) )
         {
             return "参数错误.";
         }
-
+        string busTypeId="";
 
         OperationMainDAL MyDAL = new OperationMainDAL();
         int rtn = 0;
@@ -352,6 +579,7 @@ public partial class Service_command : System.Web.UI.Page
         switch (op)
         {
             case "add":
+                busTypeId = GetPageParam(Page, "busTypeId");
                 rtn = MyDAL.Insert(id, busTypeId, "", DateTime.Now);
                 if (rtn > 0)
                 {
@@ -364,7 +592,8 @@ public partial class Service_command : System.Web.UI.Page
 
                 break;
             case "del":
-                rtn = MyDAL.Delete(id,busTypeId);
+               busTypeId = GetPageParam(Page, "busTypeId");
+                rtn = MyDAL.Delete(id, busTypeId);
                 if (rtn > 0)
                 {
                     msg = "0#成功";
@@ -381,7 +610,10 @@ public partial class Service_command : System.Web.UI.Page
                 DataSet ds =
                     Common.Pager("OperationMain", "ID,ProductID,MainSCID,(select CN_Name from dict_product where ID=OperationMain.ProductID) as ProductName", "ID", 100, 1, false, "MainSCID='" + id + "'",
                                  out recc);
-                msg = JsonConvert.SerializeObject(ds);
+                if (ds != null && ds.Tables.Count > 1)
+                {
+                    msg = JsonConvert.SerializeObject(ds.Tables[0]);
+                }
                 break;
 
             default:

@@ -33,7 +33,7 @@
                     <td width="13">
                         <img src="../images/lb6.gif" width="13" height="32" /></td>
                     <td width="150" background="../images/lb7.gif" class="text-bla-b-14">
-                        <asp:Label runat="server" ID="lblSortName">初次申请</asp:Label></td>
+                        <asp:Label runat="server" ID="lblSortName"></asp:Label></td>
                     <td align="right" background="../images/lb7.gif" class="text-hui-12">首页 >>  证书办理</td>
                     <td width="13">
                         <img src="../images/lb8.gif" width="13" height="32" /></td>
@@ -67,7 +67,7 @@
                         <div class="form-group">
                             <label for="tbxContentPerson" class="col-xs-3 control-label">联系人</label>
                             <div class="col-xs-4 ">
-                                <input type="text" class="form-control" id="tbxContentPerson" />
+                                <input type="text" class="form-control" id="tbxContacts" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -99,17 +99,17 @@
                         <div class="form-group">
                             <label class="col-xs-3 control-label ">所属区域</label>
                             <div class="col-xs-4 row">
-                                <select class="form-control">
-                                    <option value="福田">福田</option>
-                                    <option value="罗湖">罗湖</option>
-                                    <option value="南山">南山</option>
-                                    <option value="龙岗">龙岗</option>
-                                    <option value="宝安">宝安</option>
-                                    <option value="盐田">盐田</option>
-                                    <option value="光明新区">光明新区</option>
-                                    <option value="坪山新区">坪山新区</option>
-                                    <option value="大鹏新区">大鹏新区</option>
-                                    <option value="龙华新区">龙华新区</option>
+                                <select class="form-control" id="tbxZone">
+                                    <option value="2">福田</option>
+                                    <option value="1">罗湖</option>
+                                    <option value="3">南山</option>
+                                    <option value="6">龙岗</option>
+                                    <option value="5">宝安</option>
+                                    <option value="4">盐田</option>
+                                    <option value="7">光明新区</option>
+                                    <option value="8">坪山新区</option>
+                                    <option value="9">大鹏新区</option>
+                                    <option value="10">龙华新区</option>
                                 </select>
                             </div>
                         </div>
@@ -471,6 +471,10 @@
         <div id="applyNo">
             <asp:Literal runat="server" ID="litApplyNo"></asp:Literal>
         </div>
-        <asp:Label runat="server" ID="lblID" Visible="false"></asp:Label>
+        
+        <div id="tbxApplyID">
+            <asp:Label runat="server" ID="lblID" ></asp:Label>
+        </div>
+        <div id="oldCertNO"></div>
     </div>
 </div>

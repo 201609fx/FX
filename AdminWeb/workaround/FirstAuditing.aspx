@@ -43,7 +43,11 @@
                 <tr><td colspan="3" > 
        <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" class="main-text">
        <tr>
-       <td align="right" valign="bottom"> 公司名称:
+       <td align="right" valign="bottom">
+           申请时间范围:
+       <asp:TextBox runat="server" ID="tbxDataStart" Width="80"></asp:TextBox>~
+           <asp:TextBox runat="server" ID="tbxDataEnd" Width="80"></asp:TextBox>
+            公司名称:
        <asp:TextBox runat="server" ID="txtKey" Width="150"></asp:TextBox>
        <asp:Button ID="btnSearch" runat="server" Text="查 询" OnClick="btnSearch_Click" />&nbsp;&nbsp;</td>
        </tr>

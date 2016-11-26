@@ -41,7 +41,7 @@ public partial class Cert_Search : System.Web.UI.UserControl
             }
             else
                 Session["mid"] = ds.Tables[0].Rows[0]["ID"].ToString();
-            this.Response.Redirect("Default.aspx?m=FirstTimeApply&ID=" + ds.Tables[0].Rows[0]["ID"].ToString() + "&type=" + ds.Tables[0].Rows[0]["Type"].ToString());
+            this.Response.Redirect("Default.aspx?m=FirstTimeApplyQ&ID=" + ds.Tables[0].Rows[0]["ID"].ToString() + "&type=" + ds.Tables[0].Rows[0]["Type"].ToString());
         }
     }
 

@@ -12,13 +12,13 @@
                               <td height="1" bgcolor="#C9E1BD"></td>
                             </tr>
                             <tr>
-                              <td height="25" bgcolor="#EFF8EA"><a class="link-n-left-list" href="?m=FirstTimeApply&staus=1">初次申请</a></td>
+                              <td height="25" bgcolor="#EFF8EA"><a class="link-n-left-list" href="?m=FirstTimeApplyQ&staus=1">初次申请</a></td>
                             </tr>
                             <tr>
                               <td height="1" bgcolor="#C9E1BD"></td>
                             </tr>
                             <tr>
-                              <td height="25" bgcolor="#EFF8EA"><a class="link-n-left-list" href="?m=FirstTimeApply&type=2&staus=1">晋级申请</a></td>
+                              <td height="25" bgcolor="#EFF8EA"><a class="link-n-left-list" href="?m=FirstTimeApplyQ&type=2&staus=1">晋级申请</a></td>
                             </tr>
                             <tr>
                               <td height="1" bgcolor="#C9E1BD"></td>

@@ -18,8 +18,8 @@
 		<siteMapNode url="Contact/default.aspx" title="联系我们"  description="">
 		</siteMapNode>
 		<siteMapNode url="Cert/default.aspx" title="证书办理"  description="">
-			<siteMapNode url="Cert/default.aspx?m=FirstTimeApply" title="初次申请"  description=""/>
-			<siteMapNode url="cert/Default.aspx?m=FirstTimeApply&amp;type=2&amp;staus=1" title="晋级申请"  description=""/>
+			<siteMapNode url="Cert/default.aspx?m=FirstTimeApplyQ" title="初次申请"  description=""/>
+			<siteMapNode url="cert/Default.aspx?m=FirstTimeApplyQ&amp;type=2&amp;staus=1" title="晋级申请"  description=""/>
 			<siteMapNode url="cert/Default.aspx?m=default" title="证书查询"  description=""/>
 			<siteMapNode url="cert/Default.aspx?m=SearchTemp" title="申请进度查询"  description=""/>
 			<siteMapNode url="cert/Default.aspx?m=Search" title="企业申请资料查询"  description=""/>

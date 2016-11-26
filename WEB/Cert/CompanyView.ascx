@@ -26,13 +26,8 @@
                         <td><table width="740" border="0" align="center" cellpadding="0" cellspacing="0" class="text-wz">
                            <tr><td>
                            <p>
-                           您的申请已经被提交，我们会尽快审核回复您。您的记录号是
-                           <font class="text-red">
-                             <asp:Label ID="lblShow" runat="server"></asp:Label></font>，您提交的公司名称是
-                           <font class="text-red">
-                             <asp:Label ID="lblCompany" runat="server"></asp:Label></font>
-                             请注意保存以备查询。
-                             </p>
+                                <asp:Literal runat="server" ID="litSaveType"></asp:Literal> 
+                          
                                    <p>
                           友情提示：在企业申请资料查询通过您的记录号以及您提交的公司名称可以查找您提交或者保存的资料以便查询或者修改。
                                    </p>

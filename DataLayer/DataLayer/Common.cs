@@ -59,6 +59,20 @@ namespace SZMA.DataLayer
 			return ds;
 		}
 
+        /// <summary>
+        /// 直接传入SQL返回ds
+        /// </summary>
+        /// <param name="sqlStr"></param>
+        /// <returns></returns>
+        public static DataSet SelectByPager(string sqlStr)
+        {
+            DataSet ds;
+
+            ds = dbHelper.ExecuteDataset(ConfigurationManager.AppSettings["ConnectionString"], CommandType.Text, sqlStr, null);
+
+            return ds;
+        }
+
 		/// <summary>
 		/// 
 		/// </summary>
